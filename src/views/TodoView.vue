@@ -22,7 +22,6 @@ const filteredTodos = computed(() =>{
 })
 
 function addTodo() {
-  console.log(`newTodo: ${newTodo.value}`)
   const todo: TodoType = {
     id: todos.value.length + 1,
     name: newTodo.value,
@@ -37,7 +36,7 @@ function addTodo() {
 <template>
   <div>
     <h1>Todo</h1>
-    <button @click="()=>{console.log('click');hideCompleted = !hideCompleted;}">Toggle Done Todos</button>
+    <button @click="hideCompleted = !hideCompleted">Toggle Done Todos</button>
     <div class="flex flex-col">
       <div v-for="todo in filteredTodos" :key="todo.id">
         <Todo :name="todo.name" :done="todo.done" @checked="todo.done = !todo.done" />
