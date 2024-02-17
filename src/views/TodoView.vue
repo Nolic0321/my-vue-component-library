@@ -1,6 +1,8 @@
 <script setup lang="ts">
+import Button from '@component-library/ButtonItem.vue'
+import Input  from '@component-library/InputItem.vue'
 import { computed, ref } from 'vue'
-import Todo, { type TodoType } from '@/components/Todo.vue'
+import Todo, { type TodoType } from '@/components/TodoItem.vue'
 
 const todos = ref([
   {id:1, name: 'Create Todo Component', done: true},
@@ -42,18 +44,14 @@ function todoChecked(todoId: number) {
     <button @click="hideCompleted = !hideCompleted">Toggle Done Todos</button>
     <div class="flex flex-col">
       <div v-for="todo in filteredTodos" :key="todo.id">
-        <Todo :name="todo.name" :done="todo.done" @checked="(todo)=>todoChecked(todoId)" />
+        <Todo :name="todo.name" :done="todo.done" @checked="(todoId)=>todoChecked(todoId)" />
       </div>
     </div>
     <div>
       <form @submit.prevent="addTodo">
-        <input
-          type="text"
-          v-model="newTodo" />
-        <button
-          class="ml-2 outline-1 px-2 py-1 rounded">
-          Add
-        </button>
+        <Input
+          :model="newTodo" />
+        <Button class="ml-2" name="Add Todo"/>
       </form>
     </div>
   </div>
