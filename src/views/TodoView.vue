@@ -9,14 +9,15 @@ const todos = ref([
   {id:2, name: 'Create Ability to add todo', done: true},
   {id:3, name: 'Create Ability to remove todo', done: false},
   {id:4, name: 'Update Todo when checked', done: false}
-] as TodoType[])
+])
 const newTodo = ref('')
 const hideCompleted = ref(false);
+
 const filteredTodos = computed(() =>{
   if(hideCompleted.value){
-    return todos.value.filter(todo => !todo.done)
+    return todos.value.filter((todo:TodoType) => !todo.done);
   }else{
-    return todos.value
+    return todos.value;
   }
 })
 
@@ -31,21 +32,15 @@ function addTodo() {
   newTodo.value = ''
 }
 
-function todoChecked(todoId: number) {
-  const todo = todos.value.find(t => t.id === todoId);
-  if (!todo) return;
-  todo.done = !todo.done;
-}
-
 </script>
 
 <template>
   <div>
     <h1>Todo</h1>
-    <button @click="hideCompleted = !hideCompleted">Toggle Done Todos</button>
+    <button @click="()=>{console.log('click');hideCompleted = !hideCompleted;}">Toggle Done Todos</button>
     <div class="flex flex-col">
       <div v-for="todo in filteredTodos" :key="todo.id">
-        <Todo :name="todo.name" :done="todo.done" @checked="(todoId)=>todoChecked(todoId)" />
+        <Todo :name="todo.name" :done="todo.done" @checked="todo.done = !todo.done" />
       </div>
     </div>
     <div>
