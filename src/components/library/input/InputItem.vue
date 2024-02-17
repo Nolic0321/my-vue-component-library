@@ -20,7 +20,7 @@ watch(() => props.modelValue, (value) => {
 </template>
 
 <style scoped>
-@import "src/assets/base.css";
+@import "../../../assets/base.css";
 
 @media (prefers-color-scheme: light) {
   input {

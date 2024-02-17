@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import Button from '@component-library/ButtonItem.vue'
-import Input  from '@component-library/InputItem.vue'
+import Button from '@component-library/button/ButtonItem.vue'
+import Input  from '@component-library/input/InputItem.vue'
 import { computed, ref } from 'vue'
 import Todo, { type TodoType } from '@/components/TodoItem.vue'
 

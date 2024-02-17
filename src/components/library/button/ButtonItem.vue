@@ -13,7 +13,7 @@ const name = ref(props.name);
 </template>
 
 <style scoped>
-@import "src/assets/base.css";
+@import "../../../assets/base.css";
 
 button{
   font-size: 14px;
