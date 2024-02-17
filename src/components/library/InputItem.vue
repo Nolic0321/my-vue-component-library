@@ -1,13 +1,22 @@
 <script setup lang="ts">
+import { watch } from 'vue'
+
 const props = defineProps({
-  model: String
+  modelValue: String
+});
+
+const emit = defineEmits(['update:modelValue']);
+
+watch(() => props.modelValue, (value) => {
+  emit('update:modelValue', value);
 });
 </script>
 
 <template>
 <input
   type="text"
-  v-model="props.model" />
+  :value="props.modelValue"
+  @input="$emit('update:modelValue', ($event.target as HTMLInputElement).value)"/>
 </template>
 
 <style scoped>

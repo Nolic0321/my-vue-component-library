@@ -21,6 +21,7 @@ const filteredTodos = computed(() =>{
 })
 
 function addTodo() {
+  console.log(`newTodo: ${newTodo.value}`)
   const todo: TodoType = {
     id: todos.value.length + 1,
     name: newTodo.value,
@@ -49,8 +50,7 @@ function todoChecked(todoId: number) {
     </div>
     <div>
       <form @submit.prevent="addTodo">
-        <Input
-          :model="newTodo" />
+        <Input v-model="newTodo" />
         <Button class="ml-2" name="Add Todo"/>
       </form>
     </div>

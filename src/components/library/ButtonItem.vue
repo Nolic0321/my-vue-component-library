@@ -9,7 +9,7 @@ const name = ref(props.name);
 </script>
 
 <template>
-<button @click="$emit('onClick')" class="px-2 py-1 rounded-lg">{{name}}</button>
+<button class="px-2 py-1 rounded-lg">{{name}}</button>
 </template>
 
 <style scoped>
