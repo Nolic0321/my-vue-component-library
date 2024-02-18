@@ -39,7 +39,7 @@ function addTodo() {
     <button @click="hideCompleted = !hideCompleted">Toggle Done Todos</button>
     <div class="flex flex-col">
       <div v-for="todo in filteredTodos" :key="todo.id">
-        <Todo :name="todo.name" :done="todo.done" @checked="todo.done = !todo.done" />
+        <Todo :id="todo.id" :name="todo.name" :done="todo.done" @checked="todo.done = !todo.done" />
       </div>
     </div>
     <div>
