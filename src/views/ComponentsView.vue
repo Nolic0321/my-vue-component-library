@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Button from '@component-library/button/ButtonItem.vue'
+import ToggleItem from '@component-library/toggle/ToggleItem.vue'
 </script>
 
 <template>
@@ -7,6 +8,9 @@ import Button from '@component-library/button/ButtonItem.vue'
   <h1>Welcome to the Component Library</h1>
   <div>
     <Button name="Button"/>
+  </div>
+  <div>
+    <ToggleItem/>
   </div>
 </div>
 </template>

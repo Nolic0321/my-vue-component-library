@@ -4,12 +4,6 @@ import { watch } from 'vue'
 const props = defineProps({
   modelValue: String
 });
-
-const emit = defineEmits(['update:modelValue']);
-
-watch(() => props.modelValue, (value) => {
-  emit('update:modelValue', value);
-});
 </script>
 
 <template>
@@ -24,6 +18,7 @@ watch(() => props.modelValue, (value) => {
 
 @media (prefers-color-scheme: light) {
   input {
+    background-color: white;
     box-shadow: inset 0 2px 2px hsla(0, 0%, 0%, 0.1),
     0 1px 0 hsla(212, 100%, 97%, 79%);
   }

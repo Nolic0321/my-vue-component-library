@@ -17,7 +17,8 @@ export default defineComponent({
   data() {
     return {
       inputChecked: this.done,
-      editMode: false
+      editMode: false,
+      inputValue:''
     }
   },
   emits: ['checked'],
@@ -46,16 +47,21 @@ export default defineComponent({
       <span v-if="!editMode"
             :class="{'line-through':inputChecked,'w-full':true, 'text-gray-400 dark:text-gray-600':inputChecked}">{{ name
         }}</span>
-      <InputItem class="ml-2" v-if="editMode" type="text" v-model="name" />
+      <InputItem class="ml-2" v-if="editMode" type="text" :model-value="name" />
       <span class="w-full"></span>
+      <Transition name="edit">
+          <v-icon v-if="!editMode" @click="editMode = !editMode" icon="more_vert"/>
+      </Transition>
+      <Transition name="delete">
+        <v-icon v-if="editMode" @click="editMode = !editMode" icon="close"/>
+      </Transition>
       <v-menu class="ml-2">
         <template v-slot:activator="{ props }">
           <v-btn variant="plain" density="compact" v-bind="props" :ripple="false">
-            <v-icon icon="more_vert"></v-icon>
           </v-btn>
         </template>
         <v-list>
-          <v-list-item key="1" value="1" @click="">
+          <v-list-item key="1" value="1">
             <v-list-item-title>Remove</v-list-item-title>
           </v-list-item>
         </v-list>
@@ -67,5 +73,32 @@ export default defineComponent({
 input[type="checkbox"] {
   box-shadow: inset 0 0 1px hsla(0, 0%, 0%, 0.1),
   0 0 0 hsla(0, 0%, 100%, 0.15);
+}
+
+.edit-enter-active,
+.edit-leave-active{
+  transition: all 0.5s ease-in-out;
+}
+
+.edit-leave-from{
+  opacity: 1;
+}
+
+.edit-leave-to{
+  opacity: 0;
+}
+
+.edit-enter-from {
+  opacity: 0;
+  transform: translateX(-10px);
+}
+
+.delete-enter-active{
+  transition: all 0.5s ease-in;
+}
+
+.delete-enter-from {
+  opacity: 0;
+  transform: translateX(10px);
 }
 </style>
